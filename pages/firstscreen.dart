@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:servicehub/pages/electrician.dart';
+import 'package:servicehub/pages/housecleaning.dart';
+import 'package:servicehub/pages/plumingpage.dart';
 
 class Firstscreen extends StatefulWidget {
   const Firstscreen({super.key});
@@ -13,15 +16,15 @@ class _FirstscreenState extends State<Firstscreen> {
   List<Widget> list = [
     Icon(
       Icons.home,
-      size: 20,
+      size: 30,
     ),
     Icon(
       Icons.history,
-      size: 20,
+      size: 30,
     ),
     Icon(
       Icons.person,
-      size: 20,
+      size: 30,
     )
   ];
   @override
@@ -34,7 +37,7 @@ class _FirstscreenState extends State<Firstscreen> {
           child: Text(
             'ServiceHub',
             style: TextStyle(
-              color: Colors.yellow[500],
+              color: Colors.orangeAccent,
               fontSize: 30,
               fontWeight: FontWeight.bold,
             ),
@@ -48,23 +51,30 @@ class _FirstscreenState extends State<Firstscreen> {
           child: ListView(
             children: [
               SizedBox(height: 60),
-              serviec(Icon(Icons.water_drop), 'Plumbings'),
+              serviec(context, Icon(Icons.water_drop), 'Plumbing', Plumingpage()),
               SizedBox(height: 20),
-              serviec(Icon(Icons.thunderstorm_sharp), 'Electrician'),
+              serviec(context, Icon(Icons.thunderstorm_sharp), 'Electrician', ElectricianPage()),
               SizedBox(height: 20),
-              serviec(Icon(Iconsax.home4), 'House Cleaning'),
+              serviec(context, Icon(Iconsax.home_21), 'House Cleaning', HousecleaningPage()),
             ],
           ),
         ),
       ),
-      bottomNavigationBar: CurvedNavigationBar(items: list),
+      bottomNavigationBar: CurvedNavigationBar(
+        items: list,
+        color: Colors.orangeAccent,
+        backgroundColor: Colors.orangeAccent,
+        animationCurve: Easing.linear,
+        height: 70,
+      ),
     );
   }
 }
 
-Widget serviec(Icon icon, String name) {
+Widget serviec(BuildContext context, Icon icon, String name, Widget newpage) {
   return Container(
     decoration: BoxDecoration(
+      color: Colors.orangeAccent,
       boxShadow: List.empty(growable: false),
       borderRadius: BorderRadius.circular(20),
       border: BoxBorder.all(
@@ -79,7 +89,7 @@ Widget serviec(Icon icon, String name) {
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              color: Colors.blueGrey[100],
+              color: Colors.orangeAccent,
               shape: BoxShape.circle,
             ),
             child: icon,
@@ -93,10 +103,16 @@ Widget serviec(Icon icon, String name) {
             ),
           ),
           Spacer(),
-          Icon(
-            Icons.arrow_forward_ios,
-            size: 25,
-          )
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black,
+            ),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => newpage)),
+            child: Icon(
+              Icons.arrow_forward_ios_outlined,
+              color: Colors.orangeAccent,
+            ),
+          ),
         ],
       ),
     ),
