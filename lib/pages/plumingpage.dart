@@ -48,7 +48,7 @@ class _PlumingpageState extends State<Plumingpage> {
             style: TextStyle(
               color: Colors.orangeAccent,
               fontSize: 30,
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
