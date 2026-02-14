@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'Signup.dart';
+
 class Signup extends StatefulWidget {
   const Signup({super.key});
   @override
   State<Signup> createState() => _SignupState();
 }
+
 class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class _SignupState extends State<Signup> {
             ],
           ),
         ),
-        child:Column(
+        child: Column(
           children: [
-            Image.asset("assets/images/img_1.png", height:90, width: 100),
+            Image.asset("assets/images/img_1.png", height: 90, width: 100),
             SizedBox(height: 10),
             Text(
               "Service Hub",
@@ -34,7 +34,7 @@ class _SignupState extends State<Signup> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(height:30),
+            SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,9 +56,7 @@ class _SignupState extends State<Signup> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(
-                      30
-                  ),
+                  padding: const EdgeInsets.all(30),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -67,7 +65,7 @@ class _SignupState extends State<Signup> {
                         buildtext("Email Address"),
                         SizedBox(height: 8),
                         buildtff("Enter your Email", Icons.email),
-                        SizedBox(height:16),
+                        SizedBox(height: 16),
                         buildtext("Password"),
                         SizedBox(height: 8),
                         buildtff("Enter Your Password", Icons.password),
@@ -84,11 +82,10 @@ class _SignupState extends State<Signup> {
                           child: ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Signup()));
-
+                                Navigator.push(
+                                    context, MaterialPageRoute(builder: (context) => Signup()));
                               });
                             },
-                            child: buildtext("SignUp"),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.amberAccent,
                               shape: RoundedRectangleBorder(
@@ -96,6 +93,7 @@ class _SignupState extends State<Signup> {
                               ),
                               fixedSize: Size(120, 40),
                             ),
+                            child: buildtext("SignUp"),
                           ),
                         ),
                         SizedBox(height: 40),
@@ -105,30 +103,28 @@ class _SignupState extends State<Signup> {
                 ),
               ),
             ),
-          ],),
+          ],
+        ),
       ),
     );
   }
 }
-Widget buildtext(String txt){
-  return Text(txt,
+
+Widget buildtext(String txt) {
+  return Text(
+    txt,
     style: TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.bold,
     ),
   );
 }
-Widget buildtff(String txt,IconData ic){
-  return Container(
-    decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow:[BoxShadow(
-            color: Color.fromRGBO(225, 95, 27, .3),
-            blurRadius: 20,
-            offset: Offset(0, 10)
-        )]
 
-    ),
+Widget buildtff(String txt, IconData ic) {
+  return Container(
+    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+      BoxShadow(color: Color.fromRGBO(225, 95, 27, .3), blurRadius: 20, offset: Offset(0, 10))
+    ]),
     child: TextFormField(
       keyboardType: TextInputType.text,
       decoration: InputDecoration(

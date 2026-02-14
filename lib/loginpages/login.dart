@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:servicehub/pages/signup.dart';
-import 'Signup.dart';
+import '../pages/Signup.dart';
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -112,7 +110,7 @@ class _LoginState extends State<Login> {
                                   Navigator.push(context,MaterialPageRoute(builder: (context)=>Signup()));
                                 });
                               },
-                              child:buildtext("Sign In"),
+                              
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.amberAccent,
                                 shape: RoundedRectangleBorder(
@@ -122,6 +120,7 @@ class _LoginState extends State<Login> {
                                 ),
                                 fixedSize: Size(100, 50),
                               ),
+                              child: buildtext("Sign In"),
                             ),
                             SizedBox(width: 90),
                             ElevatedButton(
@@ -131,7 +130,7 @@ class _LoginState extends State<Login> {
 
                                 });
                               },
-                              child: buildtext("Sign In"),
+                              
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.amberAccent,
                                 shape: RoundedRectangleBorder(
@@ -139,6 +138,7 @@ class _LoginState extends State<Login> {
                                 ),
                                 fixedSize: Size(100, 50),
                               ),
+                              child: buildtext("Sign In")
                             ),
                           ],
                         ),
@@ -184,7 +184,7 @@ Widget _buildcontainer (String hntxt , IconData ic){
           borderSide: BorderSide(color: Colors.grey),
           borderRadius: BorderRadius.circular(7),
         ),
-        fillColor: Colors.white.withOpacity(0.2),
+        fillColor: Colors.white,
         filled: true,
         hintText: hntxt,
         prefixIcon: Icon(ic),
