@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servicehub/pages/firstscreen.dart';
+import 'package:servicehub/loginpages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Firstscreen(),
+      home: Login(),
     );
   }
 }
