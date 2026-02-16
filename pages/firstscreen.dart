@@ -51,7 +51,7 @@ class _FirstscreenState extends State<Firstscreen> {
           child: ListView(
             children: [
               SizedBox(height: 60),
-              serviec(context, Icon(Icons.water_drop), 'Plumbing', Plumingpage()),
+              serviec(context, Icon(Icons.water_drop), 'Plumbing', PlumingPage()),
               SizedBox(height: 20),
               serviec(context, Icon(Icons.thunderstorm_sharp), 'Electrician', ElectricianPage()),
               SizedBox(height: 20),

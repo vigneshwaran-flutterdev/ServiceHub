@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:servicehub/pages/electrician.dart';
+import 'package:servicehub/pages/history.dart';
 import 'package:servicehub/pages/housecleaning.dart';
 import 'package:servicehub/pages/plumingpage.dart';
+import 'package:servicehub/pages/profile.dart';
 
 class Firstscreen extends StatefulWidget {
   const Firstscreen({super.key});
@@ -51,7 +53,7 @@ class _FirstscreenState extends State<Firstscreen> {
           child: ListView(
             children: [
               SizedBox(height: 60),
-              serviec(context, Icon(Icons.water_drop), 'Plumbing', Plumingpage()),
+              serviec(context, Icon(Icons.water_drop), 'Plumbing', PlumingPage()),
               SizedBox(height: 20),
               serviec(context, Icon(Icons.thunderstorm_sharp), 'Electrician', ElectricianPage()),
               SizedBox(height: 20),

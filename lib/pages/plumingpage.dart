@@ -2,14 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 import 'package:iconsax/iconsax.dart';
 
-class Plumingpage extends StatefulWidget {
-  const Plumingpage({super.key});
+import 'history.dart';
+
+class PlumingPage extends StatefulWidget {
+  const PlumingPage({super.key});
 
   @override
-  State<Plumingpage> createState() => _PlumingpageState();
+  State<PlumingPage> createState() => _PlumingPageState();
 }
 
-class _PlumingpageState extends State<Plumingpage> {
+class _PlumingPageState extends State<PlumingPage> {
+  List<String> bookingHistory = [];
   List<Map<String, dynamic>> details = [
     {
       'name': 'Alex',
@@ -63,6 +66,7 @@ class _PlumingpageState extends State<Plumingpage> {
             detail['place'],
             detail['number'],
             detail['rating'],
+            bookingHistory,
           );
         },
       ),
@@ -70,7 +74,8 @@ class _PlumingpageState extends State<Plumingpage> {
   }
 }
 
-Widget createWidget(BuildContext context, String name, String number, String place, double val) {
+Widget createWidget(BuildContext context, String name, String number,
+    String place, double val, List<String> bookingHistory) {
   return Padding(
     padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
     child: Container(
@@ -131,7 +136,7 @@ Widget createWidget(BuildContext context, String name, String number, String pla
                         borderRadius: BorderRadius.circular(15),
                       )),
                   onPressed: () {
-                    openDialogBox(context, name);
+                    openDialogBox(context, name, bookingHistory);
                   },
                   child: Text(
                     'Book service',
@@ -150,7 +155,8 @@ Widget createWidget(BuildContext context, String name, String number, String pla
   );
 }
 
-void openDialogBox(BuildContext context, String name) {
+void openDialogBox(
+    BuildContext context, String name, List<String> bookingHistory) {
   showDialog(
     context: context,
     builder: (context) {
@@ -182,6 +188,14 @@ void openDialogBox(BuildContext context, String name) {
                   backgroundColor: Colors.orangeAccent,
                 ),
                 onPressed: () {
+                  bookingHistory.add("$name booked at ${DateTime.now()}");
+                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            HistoryPage(history: bookingHistory),
+                      ));
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text("The Requested service has been booked"),

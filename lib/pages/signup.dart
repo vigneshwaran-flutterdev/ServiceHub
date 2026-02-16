@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:servicehub/pages/firstscreen.dart';
 import 'Signup.dart';
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -84,7 +85,7 @@ class _SignupState extends State<Signup> {
                           child: ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Signup()));
+                                Navigator.push(context,MaterialPageRoute(builder: (context)=>Firstscreen()));
 
                               });
                             },
