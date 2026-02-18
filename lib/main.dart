@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:servicehub/pages/Signup.dart';
 import 'package:servicehub/pages/firstscreen.dart';
+import 'package:servicehub/pages/history.dart';
 import 'package:servicehub/pages/login.dart';
 import 'package:servicehub/pages/profile.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:Profile(),
+      home:Login(),
     );
   }
 }

@@ -3,16 +3,21 @@ import 'package:flutter/material.dart';
 
 class HistoryPage extends StatelessWidget{
   final List<String> history;
-  const HistoryPage({super.key, required this.history});
+  HistoryPage({super.key, required this.history});
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("ServiceHub"),
+        centerTitle: true,
+        backgroundColor: Colors.orange,
+      ),
       body: history.isEmpty ? Center(child: Text("No Bookings yet")) : ListView.builder(
         itemCount: history.length,
           itemBuilder:(context,index){
         return ListTile(
           title: Text(history[index]),
+
         );
       }),
     );

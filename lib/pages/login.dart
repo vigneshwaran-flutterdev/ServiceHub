@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:servicehub/pages/signup.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
 }
+
 class _LoginState extends State<Login> {
   final formkey = GlobalKey<FormState>();
   @override
@@ -28,7 +30,7 @@ class _LoginState extends State<Login> {
           children: [
             Column(
               children: [
-                Image.asset("assets/images/img_1.png", height:90, width: 100),
+                Image.asset("assets/images/img_1.png", height: 90, width: 100),
                 SizedBox(height: 2),
                 Text(
                   "Service Hub",
@@ -38,7 +40,7 @@ class _LoginState extends State<Login> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height:2),
+                SizedBox(height: 2),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,11 +81,13 @@ class _LoginState extends State<Login> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildcontainer("Enter your Email",Icons.email ),
-                            SizedBox(height: 20,),
+                            _buildcontainer("Enter your Email", Icons.email),
+                            SizedBox(
+                              height: 20,
+                            ),
                             buildtext("Password"),
-
-                            _buildcontainer("Enter your Password", Icons.password),
+                            _buildcontainer(
+                                "Enter your Password", Icons.password),
                           ],
                         ),
                       ),
@@ -96,11 +100,10 @@ class _LoginState extends State<Login> {
                           SizedBox(width: 170),
                           TextButton(
                               onPressed: () {},
-                              child: buildtext("Forgot Password?")
-                          ),
+                              child: buildtext("Forgot Password?")),
                         ],
                       ),
-                      SizedBox(height: 50),
+                      SizedBox(height: 20),
                       Center(
                         child: Row(
                           children: [
@@ -108,10 +111,13 @@ class _LoginState extends State<Login> {
                             ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Signup()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Signup()));
                                 });
                               },
-                              child:buildtext("Sign In"),
+                              child: buildtext("Sign In"),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.amberAccent,
                                 shape: RoundedRectangleBorder(
@@ -119,30 +125,57 @@ class _LoginState extends State<Login> {
                                     7,
                                   ),
                                 ),
-                                fixedSize: Size(100, 50),
+                                fixedSize: Size(100, 35),
                               ),
                             ),
                             SizedBox(width: 90),
                             ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  Navigator.push(context,MaterialPageRoute(builder: (context)=>Signup()));
-
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Signup()));
                                 });
                               },
-                              child: buildtext("Sign In"),
+                              child: buildtext("Sign up"),
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.amberAccent,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(7),
                                 ),
-                                fixedSize: Size(100, 50),
+                                fixedSize: Size(100, 35),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 40),
+                      SizedBox(height: 20),
+                      Divider(
+                        height: 3,
+                        thickness: 2,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Center(
+                        child: TextButton.icon(
+                            style: TextButton.styleFrom(
+                                backgroundColor: Colors.white),
+                            icon: Image.asset(
+                              "assets/images/img.png",
+                              width: 25,
+                              height: 25,
+                            ),
+                            onPressed: () {},
+                            label: Text(
+                              "Do you have an account?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                              ),
+                            )),
+                      )
                     ],
                   ),
                 ),
@@ -154,24 +187,26 @@ class _LoginState extends State<Login> {
     );
   }
 }
-Widget buildtext(String txt){
-  return Text(txt,
+
+Widget buildtext(String txt) {
+  return Text(
+    txt,
     style: TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.bold,
     ),
   );
 }
-Widget _buildcontainer (String hntxt , IconData ic){
+
+Widget _buildcontainer(String hntxt, IconData ic) {
   return Container(
-    decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: [BoxShadow(
-          color: Color.fromRGBO(225, 95, 27, .3),
-          blurRadius: 20,
-          offset:Offset(0,10),
-        )]
-    ),
+    decoration: BoxDecoration(color: Colors.white, boxShadow: [
+      BoxShadow(
+        color: Color.fromRGBO(225, 95, 27, .3),
+        blurRadius: 20,
+        offset: Offset(0, 10),
+      )
+    ]),
     child: TextFormField(
       obscureText: true,
       decoration: InputDecoration(
