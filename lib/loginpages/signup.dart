@@ -1,5 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:servicehub/pages/firstscreen.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -7,7 +11,38 @@ class Signup extends StatefulWidget {
   State<Signup> createState() => SignupState();
 }
 
+Future<String> signUp(
+  String email,
+  String password,
+  String username,
+  phon,
+  Timestamp stamp,
+  BuildContext context,
+) async {
+  try {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    String id = FirebaseAuth.instance.currentUser!.uid;
+    await FirebaseFirestore.instance.collection('users').doc(id).set({
+      'createdAt': stamp,
+      'email': email,
+      'phno': phon,
+      'username': username,
+    });
+    return 'You signup is done';
+  } on FirebaseAuthException catch (e) {
+    return e.code;
+  }
+}
+
 class SignupState extends State<Signup> {
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController phoneNumber = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,23 +102,53 @@ class SignupState extends State<Signup> {
                       children: [
                         buildtext("Email Address"),
                         SizedBox(height: 8),
-                        buildtff("Enter your Email", Icons.email),
+                        buildtff("Enter your Email", Icons.email, email),
                         SizedBox(height: 16),
                         buildtext("Password"),
                         SizedBox(height: 8),
-                        buildtff("Enter Your Password", Icons.password),
+                        buildtff("Enter Your Password", Icons.password, password),
                         SizedBox(height: 16),
                         buildtext("Username"),
                         SizedBox(height: 8),
-                        buildtff("Enter your Username", Icons.person),
+                        buildtff("Enter your Username", Icons.person, username),
                         SizedBox(height: 16),
                         buildtext("Phone Number"),
                         SizedBox(height: 8),
-                        buildtff("Enter your 10-digit number", Icons.phone),
+                        buildtff("Enter your 10-digit number", Icons.phone, phoneNumber),
                         SizedBox(height: 25),
                         Center(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              final val = await signUp(
+                                email.text,
+                                password.text,
+                                username.text,
+                                int.tryParse(phoneNumber.text),
+                                Timestamp.now(),
+                                context,
+                              );
+                              if (val == 'You signup is done') {
+                                Center(child: CircularProgressIndicator());
+                                password.clear();
+                                email.clear();
+                                username.clear();
+                                phoneNumber.clear();
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(val.toString()),
+                                  ),
+                                );
+
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => Firstscreen()));
+                              }
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(val.toString()),
+                                ),
+                              );
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.orangeAccent.shade200,
                               shape: RoundedRectangleBorder(
@@ -118,7 +183,7 @@ Widget buildtext(String txt) {
   );
 }
 
-Widget buildtff(String txt, IconData ic) {
+Widget buildtff(String txt, IconData ic, TextEditingController controller) {
   return Container(
     decoration: BoxDecoration(
       color: Colors.white,
@@ -127,6 +192,7 @@ Widget buildtff(String txt, IconData ic) {
       ],
     ),
     child: TextFormField(
+      controller: controller,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(

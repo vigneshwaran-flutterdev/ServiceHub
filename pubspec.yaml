@@ -37,6 +37,10 @@ dependencies:
   iconsax: ^0.0.8
   curved_navigation_bar: ^1.0.6
   flutter_rating_stars: ^1.1.0
+  cloud_firestore: ^6.1.2
+  firebase_core: ^4.4.0
+  firebase_auth: ^6.1.4
+  google_sign_in: ^6.2.1
 
 dev_dependencies:
   flutter_test:
