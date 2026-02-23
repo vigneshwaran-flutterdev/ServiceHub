@@ -174,6 +174,22 @@ void openDialogBox(BuildContext context, String name) {
             Text('Are they accepted the service'),
             SizedBox(height: 20),
             Text('You are about to book the $name for \npluming service'),
+            Text.rich(
+              TextSpan(
+                text: 'You are about to book the service of ',
+                children: [
+                  TextSpan(
+                    text: '$name\n',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'for House cleaning service',
+                  )
+                ],
+              ),
+            ),
             SizedBox(height: 30),
             SizedBox(
               width: double.infinity,
@@ -187,6 +203,7 @@ void openDialogBox(BuildContext context, String name) {
                       content: Text("The Requested service has been booked"),
                     ),
                   );
+                  Navigator.of(context).pop();
                 },
                 child: Text(
                   'Yes',

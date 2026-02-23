@@ -128,13 +128,14 @@ Widget createWidget(BuildContext context, String name, String number,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: 340,
+                width: 300,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orangeAccent[200],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      )),
+                    backgroundColor: Colors.orangeAccent[200],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
                   onPressed: () {
                     openDialogBox(context, name, bookingHistory);
                   },
@@ -179,7 +180,22 @@ void openDialogBox(
           children: [
             Text('Are they accepted the service'),
             SizedBox(height: 20),
-            Text('You are about to book the $name for \npluming service'),
+            Text.rich(
+              TextSpan(
+                text: 'You are about to book the service of ',
+                children: [
+                  TextSpan(
+                    text: '$name\n',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: 'for Pluming service',
+                  )
+                ],
+              ),
+            ),
             SizedBox(height: 30),
             SizedBox(
               width: double.infinity,
@@ -201,6 +217,7 @@ void openDialogBox(
                       content: Text("The Requested service has been booked"),
                     ),
                   );
+                  Navigator.of(context).pop();
                 },
                 child: Text(
                   'Yes',
