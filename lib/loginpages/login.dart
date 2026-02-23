@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servicehub/pages/signup.dart';
+import 'package:servicehub/loginpages/signup.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -85,8 +85,7 @@ class _LoginState extends State<Login> {
                               height: 20,
                             ),
                             buildtext("Password"),
-                            _buildcontainer(
-                                "Enter your Password", Icons.password),
+                            _buildcontainer("Enter your Password", Icons.password),
                           ],
                         ),
                       ),
@@ -97,9 +96,7 @@ class _LoginState extends State<Login> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(width: 170),
-                          TextButton(
-                              onPressed: () {},
-                              child: buildtext("Forgot Password?")),
+                          TextButton(onPressed: () {}, child: buildtext("Forgot Password?")),
                         ],
                       ),
                       SizedBox(height: 20),
@@ -111,9 +108,7 @@ class _LoginState extends State<Login> {
                               onPressed: () {
                                 setState(() {
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Signup()));
+                                      context, MaterialPageRoute(builder: (context) => Signup()));
                                 });
                               },
                               child: buildtext("Sign In"),
@@ -132,9 +127,7 @@ class _LoginState extends State<Login> {
                               onPressed: () {
                                 setState(() {
                                   Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Signup()));
+                                      context, MaterialPageRoute(builder: (context) => Signup()));
                                 });
                               },
                               child: buildtext("Sign up"),
@@ -159,8 +152,7 @@ class _LoginState extends State<Login> {
                       ),
                       Center(
                         child: TextButton.icon(
-                            style: TextButton.styleFrom(
-                                backgroundColor: Colors.white),
+                            style: TextButton.styleFrom(backgroundColor: Colors.white),
                             icon: Image.asset(
                               "assets/images/img.png",
                               width: 25,
